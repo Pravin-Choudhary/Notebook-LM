@@ -1,18 +1,21 @@
-"use client"
+"use client";
+
 import { useSession } from "next-auth/react";
-import { ContentPanel } from '@/components/ContentPanel';
-import { ChatPanel } from '@/components/ChatPanel';
+import { ContentPanel } from "@/components/ContentPanel";
+import { ChatPanel } from "@/components/ChatPanel";
 import { redirect } from "next/navigation";
 import { DashboardSkeleton } from "@/components/DasboardSkeleton";
 
-const Index = () => {
-  const sessionResult = useSession();       
-  const { data: session, status } = sessionResult || {};
 
+const Index = () => {
+  const { data: session, status } = useSession(); // Destructure directly
+
+  // Redirect unauthenticated users
   if (status === "unauthenticated") {
-    redirect('/signin');
+    redirect("/signin");
   }
 
+  // Show skeleton while loading
   if (status === "loading" || !session) {
     return <DashboardSkeleton />;
   }
@@ -23,7 +26,7 @@ const Index = () => {
       <div className="w-[30%] border-r border-border">
         <ContentPanel />
       </div>
-      
+
       {/* Right Panel - 70% width */}
       <div className="w-[70%] flex-1">
         <ChatPanel />
