@@ -1,21 +1,20 @@
 "use client"
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
 import { ContentPanel } from '@/components/ContentPanel';
 import { ChatPanel } from '@/components/ChatPanel';
 import { redirect } from "next/navigation";
 import { DashboardSkeleton } from "@/components/DasboardSkeleton";
 
 const Index = () => {
-  const { data: session, status } = useSession();
+  const sessionResult = useSession();       
+  const { data: session, status } = sessionResult || {};
 
-  if(status === "unauthenticated"){
+  if (status === "unauthenticated") {
     redirect('/signin');
   }
 
-    if(status === "loading"){
-    return (
-      <DashboardSkeleton/>
-    )
+  if (status === "loading" || !session) {
+    return <DashboardSkeleton />;
   }
 
   return (
