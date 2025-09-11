@@ -5,17 +5,22 @@ import { ContentPanel } from "@/components/ContentPanel";
 import { ChatPanel } from "@/components/ChatPanel";
 import { redirect } from "next/navigation";
 import { DashboardSkeleton } from "@/components/DasboardSkeleton";
-
+import { useEffect } from "react";
 
 const Index = () => {
-  const { data: session, status } = useSession(); // Destructure directly
+  const sessionResult = useSession();
+  
+  // Safe destructuring with fallback
+  const { data: session, status } = sessionResult || { data: null, status: "loading" };
 
-  // Redirect unauthenticated users
-  if (status === "unauthenticated") {
-    redirect("/signin");
-  }
+  useEffect(() => {
+    // Handle redirect on client side to avoid SSR issues
+    if (status === "unauthenticated") {
+      redirect("/signin");
+    }
+  }, [status]);
 
-  // Show skeleton while loading
+  // Show skeleton while loading or if session is not available
   if (status === "loading" || !session) {
     return <DashboardSkeleton />;
   }
