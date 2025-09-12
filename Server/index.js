@@ -43,7 +43,7 @@
 
     app.get('/' , (req ,res) => {
         res.json({
-            masg : "working"
+            msg : "working"
         })
     });
 
@@ -306,7 +306,7 @@
     } catch (error) {
         console.log(`Error while Chatting : ${error.message}`);
         return res.json({
-            msg : "Server error Please try sometime!"
+            msg : "Server error Please try after sometime!"
         })
     }
     });
