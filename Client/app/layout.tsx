@@ -4,6 +4,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "@/provider";
 import { Toaster } from "@/components/ui/sonner"
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { ContentPanel } from "@/components/ContentPanel";
+import { SideBarContentPanel } from "@/components/SidebarContentPanel";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +41,18 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-        {children}
+        <SidebarProvider
+        style={{
+            "--sidebar-width": "21rem",
+            "--sidebar-width-mobile": "18rem",
+        } as React.CSSProperties}
+        >
+          {/* <ContentPanel/> */}
+          <SideBarContentPanel/>
+          <main className="w-full">
+               {children}
+          </main>
+        </SidebarProvider>
         <Toaster />
       </ThemeProvider>
       </Providers>

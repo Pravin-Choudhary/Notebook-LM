@@ -6,6 +6,7 @@ import { ChatPanel } from "@/components/ChatPanel";
 import { redirect } from "next/navigation";
 import { DashboardSkeleton } from "@/components/DasboardSkeleton";
 import { useEffect } from "react";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 const Index = () => {
   const sessionResult = useSession();
@@ -26,14 +27,14 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen flex bg-background">
+    <div className="flex bg-background ">
       {/* Left Panel - 30% width */}
-      <div className="w-[30%] border-r border-border">
-        <ContentPanel />
+      <div className="border-r border-border">
+        <SidebarTrigger/>
       </div>
 
       {/* Right Panel - 70% width */}
-      <div className="w-[70%] flex-1">
+      <div className="w-full flex-1">
         <ChatPanel />
       </div>
     </div>

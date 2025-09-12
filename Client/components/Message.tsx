@@ -32,15 +32,15 @@ export const Message = ({ message }: MessageProps) => {
   const { data: session } = useSession();
 
   return (
-    <div className={`flex gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
+    <div className={`flex gap-1 md:gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
-        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 ">
+        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
           <Bot className="w-4 h-4 text-primary" />
         </div>
       )}
       
       <div
-        className={`max-w-[80%] rounded-2xl px-4 py-3 transition-smooth ${
+        className={`max-w-[90%] sm:max-w-[100%] rounded-2xl px-4 py-3 transition-smooth ${
           isUser
             ? 'gradient-primary shadow-elegant border border-border shadow-card'
             : 'bg-chat-assistant text-primary border border-border shadow-card'

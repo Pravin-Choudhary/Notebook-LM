@@ -89,7 +89,7 @@ export const ChatPanel = () => {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-2 sm:p-4 md:p-6 space-y-4">
         {messages.map((message , index) => (
           <Message key={index}  message={message} />
         ))}
@@ -109,8 +109,8 @@ export const ChatPanel = () => {
       </div>
 
       {/* Input */}
-      <div className="p-6 border-t border-border bg-card/30">
-        <div className="flex gap-3 items-end">
+      <div className="p-3 sm:p-6 border-t border-border bg-card/30">
+        <div className="flex gap-3 items-center">
           <Textarea
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -121,7 +121,7 @@ export const ChatPanel = () => {
             rows={1}
             style={{
               height: 'auto',
-              minHeight: '44px',
+              minHeight: '60px',
             }}
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
@@ -135,7 +135,7 @@ export const ChatPanel = () => {
             variant="outline"
             className="h-11 w-11 p-0 flex-shrink-0"
           >
-            <Send className="w-4 h-4" />
+              <Send className="w-4 h-4" />
           </Button>
         </div>
       </div>

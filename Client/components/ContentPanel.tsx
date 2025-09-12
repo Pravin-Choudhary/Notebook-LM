@@ -109,11 +109,11 @@ export const ContentPanel = () => {
     <div className="h-screen flex flex-col p-6 gradient-subtle">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-foreground mb-2 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-primary" />
+        <h2 className="text-base md:text-lg lg:text-xl font-semibold text-foreground mb-2 flex items-center gap-2">
+          <FileText className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-primary" />
           Content Input
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-[12px] md:text-sm text-muted-foreground">
           Add your documents or web content to chat about
         </p>
       </div>
@@ -124,18 +124,18 @@ export const ContentPanel = () => {
    
       {contentItems.length > 0 && (
       <>
-       <h2 className="text-xl font-semibold text-foreground mb-2 pl-2">Uploaded Docs</h2>
-       <ScrollArea  className="max-h-30 mb-5 p-2 border rounded-xl">
-        <div className="mb-4 space-y-2" >
+       <h2 className="text-base md:text-lg lg:text-xl font-semibold text-foreground mb-2 pl-2">Uploaded Docs</h2>
+       <ScrollArea  className="max-h-40 border mb-5 pb-4 rounded-xl">
+        <div className="m-1 p-2 space-y-2" >
           {contentItems.map((itemName,index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-3 bg-card/50 border border-border/50 rounded-lg shadow-sm"
+              className="flex items-center justify-between p-1 lg:p-3 bg-card/50 border border-border/50 rounded-lg shadow-sm "
             >
-              <div className="flex items-center gap-3 flex-1 min-w-0">
+              <div className="flex items-center gap-1 lg:gap-3 flex-1 min-w-0 ">
                   <File className="w-4 h-4 text-primary flex-shrink-0" />
                 <span
-                  className="text-sm text-foreground truncate"
+                  className="text-[13px] md:text-sm text-foreground truncate text-wrap"
                   title={itemName ? itemName : ""}
                 >
                   {itemName}
