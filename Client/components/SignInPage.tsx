@@ -1,11 +1,27 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
-import Image from "next/image";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
+import { DashboardSkeleton } from "./DasboardSkeleton";
+
 
 
 export default function SigninPage() {
+  const sessionResult = useSession();
+  
+  const { data: session, status } = sessionResult || { data: null, status: "loading" };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      redirect("/");
+    }
+  }, [status]);
+
+  if (status === "loading" || !session) {
+    return <DashboardSkeleton/>;
+  }
   return (
     <section className="flex min-h-screen bg-zinc-50 px-4 py-16 md:py-32 dark:bg-transparent">
       <form

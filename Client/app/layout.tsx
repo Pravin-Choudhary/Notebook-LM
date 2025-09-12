@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Notebook-LM",
-  description: "Summarize any docs or website",
+  description: "Summarize any docs or website with AI Powered Tool",
 };
 
 export default function RootLayout({

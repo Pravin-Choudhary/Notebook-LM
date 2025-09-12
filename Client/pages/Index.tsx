@@ -11,29 +11,26 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 const Index = () => {
   const sessionResult = useSession();
   
-  // Safe destructuring with fallback
   const { data: session, status } = sessionResult || { data: null, status: "loading" };
 
   useEffect(() => {
-    // Handle redirect on client side to avoid SSR issues
+  
     if (status === "unauthenticated") {
       redirect("/signin");
     }
   }, [status]);
 
-  // Show skeleton while loading or if session is not available
   if (status === "loading" || !session) {
     return <DashboardSkeleton />;
   }
 
   return (
     <div className="flex bg-background">
-      {/* Left Panel - 30% width */}
+  
       <div className="border-r border-border">
         <SidebarTrigger/>
       </div>
 
-      {/* Right Panel - 70% width */}
       <div className="w-full flex-1">
         <ChatPanel />
       </div>
