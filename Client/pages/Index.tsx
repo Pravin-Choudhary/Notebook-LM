@@ -27,7 +27,7 @@ const Index = () => {
   }
 
   return (
-    <div className="flex bg-background ">
+    <div className="flex bg-background">
       {/* Left Panel - 30% width */}
       <div className="border-r border-border">
         <SidebarTrigger/>

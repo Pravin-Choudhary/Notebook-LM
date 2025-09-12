@@ -46,8 +46,8 @@ export default function RootLayout({
             "--sidebar-width": "21rem",
             "--sidebar-width-mobile": "18rem",
         } as React.CSSProperties}
+        defaultOpen={false}
         >
-          {/* <ContentPanel/> */}
           <SideBarContentPanel/>
           <main className="w-full">
                {children}
